@@ -1,7 +1,7 @@
 package org.helgoboss.scala_osgi_metatype.interfaces
 
 /**
- * Represents a validation result of [[org.helgoboss.scala_osgi_metatype.interfaces.AttributeDefinition.validate()]].
+ * Represents a validation result of [[AttributeDefinition]]. Possible values are defined in the companion object.
  */
 sealed trait ValidationResult
 

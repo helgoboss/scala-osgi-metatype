@@ -1,10 +1,13 @@
 package org.helgoboss.scala_osgi_metatype.adapters
 
 import org.osgi.service.metatype.{ AttributeDefinition => JAttributeDefinition }
-import org.helgoboss.scala_osgi_metatype.interfaces.{Password, ElementaryAttributeDefinition, ValidationResult, AttributeDefinition}
+import org.helgoboss.scala_osgi_metatype.interfaces.{Password, ValidationResult, AttributeDefinition}
 
 /**
- * Provides the given Scala AttributeDefinition as an OSGi-compliant AttributeDefinition.
+ * Provides the given Scala attribute definition as an OSGi-compliant attribute definition.
+ *
+ * @constructor Creates an adapter for the given definition.
+ * @param delegate Scala attribute definition
  */
 abstract class AttributeDefinitionAdapter[T](delegate: AttributeDefinition[T]) extends JAttributeDefinition {
   def getDescription = delegate.description
@@ -14,12 +17,20 @@ abstract class AttributeDefinitionAdapter[T](delegate: AttributeDefinition[T]) e
   def getName = delegate.name
 
   lazy val getOptionLabels = {
-    delegate.options map { option =>
-      option.keys map { _.toString } toArray
-    } orNull
+    if (delegate.options.isEmpty) {
+      null
+    } else {
+      delegate.options map { _._1 } toArray
+    }
   }
 
-  lazy val getOptionValues = delegate.options map { _.values.toArray } orNull
+  lazy val getOptionValues = {
+    if (delegate.options.isEmpty) {
+      null
+    } else {
+      delegate.options map { _._2.toString } toArray
+    }
+  }
 
   lazy val getType = {
     import JAttributeDefinition._

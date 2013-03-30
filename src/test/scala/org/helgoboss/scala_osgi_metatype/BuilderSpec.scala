@@ -1,6 +1,5 @@
 package org.helgoboss.scala_osgi_metatype
 
-import adapters.MetaTypeProviderAdapter
 import builders.{ObjectClass, ListAttribute, ElementaryAttribute}
 import interfaces._
 import org.scalatest.junit.JUnitRunner
@@ -37,8 +36,8 @@ class BuilderSpec extends WordSpec with ShouldMatchers {
     requiredAttributes = List(
       ListAttribute[String](
         id = "allowedFruits",
-        default = Some(List("apples")),
-        options = Some(Map("apples" -> "Apples", "bananas" -> "Bananas"))
+        default = List("apples"),
+        options = List("Apples" -> "apples", "Bananas" -> "bananas")
       ),
       ElementaryAttribute[Int](id = "size"),
       ElementaryAttribute[Password](id = "password", default = Some(Password("secret01")))

@@ -3,10 +3,37 @@ package org.helgoboss.scala_osgi_metatype.builders
 import org.helgoboss.scala_osgi_metatype.interfaces.{ObjectClassDefinition, AttributeDefinition}
 
 /**
- * Convenient builder for ObjectClassDefinitions.
+ * Convenient builder for object class definitions.
  *
- * I've chosen not to create a named case class extending ObjectClassDefinition because it would cause name/type conflicts.
- * Moreover, the named class wouldn't add any benefits and would be just another class name to wonder about.
+ * == Examples ==
+ *
+ * {{{
+ * // Minimum (though I strongly advise to provide a name as well)
+ * ObjectClass(
+ *   id = "org.helgoboss.my_service",
+ *   requiredAttributes = List(
+ *     ElementaryAttribute[Int](id = "size")
+ *   )
+ * )
+ *
+ * // Maximum
+ * ObjectClass(
+ *   id = "org.helgoboss.my_service",
+ *   name = "My configurable service",
+ *   description = "A service which is configurable",
+ *   requiredAttributes = List(
+ *     ElementaryAttribute[Int](id = "size", name = "Size", default = Some(5)),
+ *     ElementaryAttribute[String](id = "user", name = "User", default = Some("root"))
+ *   ),
+ *   optionalAttributes = List(
+ *     ListAttribute[String](id = "allowedFruits")
+ *   )
+ * )
+ * }}}
+ *
+ * @note I've decided not to create a named case class extending [[ObjectClassDefinition]] because it would cause
+ *       name/type conflicts. Moreover, the named class wouldn't add any benefits and would be just another class name
+ *       to wonder about.
  */
 object ObjectClass {
   /**

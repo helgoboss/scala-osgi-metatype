@@ -2,10 +2,12 @@ package org.helgoboss.scala_osgi_metatype.adapters
 
 import org.osgi.service.metatype.{ ObjectClassDefinition => JObjectClassDefinition, AttributeDefinition => JAttributeDefinition }
 import org.helgoboss.scala_osgi_metatype.interfaces.{ListAttributeDefinition, ElementaryAttributeDefinition, ObjectClassDefinition}
-import org.helgoboss.scala_osgi_metatype.builders.ElementaryAttribute
 
 /**
- * Provides the given Scala ObjectClassDefinition as an OSGi-compliant ObjectClassDefinition.
+ * Provides the given Scala object class definition as an OSGi-compliant object class definition.
+ *
+ * @constructor Creates an adapter for the given definition.
+ * @param delegate Scala object class definition
  */
 class ObjectClassDefinitionAdapter(delegate: ObjectClassDefinition) extends JObjectClassDefinition {
   def getAttributeDefinitions(filter: Int): Array[JAttributeDefinition] = {

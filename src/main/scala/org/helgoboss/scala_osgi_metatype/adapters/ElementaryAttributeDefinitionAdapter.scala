@@ -5,7 +5,10 @@ import org.helgoboss.scala_osgi_metatype.interfaces.ElementaryAttributeDefinitio
 
 
 /**
- * Provides the given Scala ElementaryAttributeDefinition as an OSGi-compliant AttributeDefinition.
+ * Provides the given Scala elementary attribute definition as an OSGi-compliant attribute definition.
+ *
+ * @constructor Creates an adapter for the given definition.
+ * @param delegate Scala elementary attribute definition
  */
 class ElementaryAttributeDefinitionAdapter[T](delegate: ElementaryAttributeDefinition[T])
   extends AttributeDefinitionAdapter[T](delegate) {

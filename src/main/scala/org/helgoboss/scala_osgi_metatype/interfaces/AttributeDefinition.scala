@@ -21,9 +21,9 @@ sealed trait AttributeDefinition[T] {
   def name: String
 
   /**
-   * Return a list of option values that this attribute can take.
+   * Return a list of possible option labels and values that this attribute can take or `Nil`.
    */
-  def options: Option[Map[T, String]]
+  def options: Traversable[(String, T)]
 
   /**
    * Validates an attribute.
@@ -51,7 +51,7 @@ trait ListAttributeDefinition[T] extends AttributeDefinition[T] {
    */
   def sizeLimit: Option[Int]
 
-  def defaultValue: Option[List[T]]
+  def defaultValue: Option[Traversable[T]]
 }
 
 /**

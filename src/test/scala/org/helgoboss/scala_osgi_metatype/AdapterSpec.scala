@@ -1,7 +1,6 @@
 package org.helgoboss.scala_osgi_metatype
 
 import adapters.MetaTypeProviderAdapter
-import builders.{ObjectClass, ListAttribute, ElementaryAttribute}
 import interfaces._
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
@@ -60,10 +59,10 @@ class AdapterSpec extends WordSpec with ShouldMatchers {
     def defaultValue = Some(List("apples"))
     val valueType = classOf[String]
 
-    def options = Some(Map(
-      "apples" -> "Apples",
-      "bananas" -> "Bananas"
-    ))
+    def options = List(
+      "Apples" -> "apples",
+      "Bananas" -> "bananas"
+    )
 
     def validate(value: String) = ValidationResult.NotValidated
   }

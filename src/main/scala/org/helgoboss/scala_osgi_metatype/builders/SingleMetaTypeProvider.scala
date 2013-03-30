@@ -4,6 +4,9 @@ import org.helgoboss.scala_osgi_metatype.interfaces.{ObjectClassDefinition, Meta
 
 /**
  * A meta type provider which provides an object class definition for one id. Ignores the language.
+ *
+ * @constructor Creates the meta type provider for the given object class definition.
+ * @param definition Object class definition which shall be provided
  */
 class SingleMetaTypeProvider(definition: ObjectClassDefinition) extends MetaTypeProvider {
   val locales = Nil

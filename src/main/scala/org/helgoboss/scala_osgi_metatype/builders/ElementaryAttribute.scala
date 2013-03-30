@@ -1,9 +1,31 @@
 package org.helgoboss.scala_osgi_metatype.builders
 
 import org.helgoboss.scala_osgi_metatype.interfaces.{ValidationResult, ElementaryAttributeDefinition}
+import reflect.ClassTag
+import reflect.classTag
 
 /**
- * Convenient builder for ElementaryAttributeDefinitions without advanced validation (type validation is done).
+ * Convenient builder for elementary attribute definitions without advanced validation
+ * (type validation is done).
+ *
+ * == Examples ==
+ *
+ * {{{
+ * // Minimum
+ * ElementaryAttribute[Int](id = "size")
+ *
+ * // Maximum
+ * ElementaryAttribute[Int](
+ *   id = "size",
+ *   name = "Size",
+ *   description = "Size of the container",
+ *   default = 5,
+ *   options = List(
+ *     "Small" -> 2,
+ *     "Medium" -> 5,
+ *     "Large" -> 10
+ * )
+ * }}}
  */
 object ElementaryAttribute {
 
@@ -11,19 +33,20 @@ object ElementaryAttribute {
    * Builds an elementary attribute definition.
    *
    * @param id Unique identity for the attribute
-   * @param default Optional default for the attribute
-   * @param name Name of the attribute
-   * @param description Description of the attribute
-   * @param options Optional list of option values that the attribute can take
-   * @tparam T attribute type
+   * @param name Optional name of the attribute
+   * @param description Optional description of the attribute
+   * @param default Optional default value for the attribute
+   * @param options Optional list of possible option labels and values that the attribute can take
+   * @tparam T Attribute type
    */
-  def apply[T: ClassManifest](
+  def apply[T: ClassTag](
       id: String,
-      default: Option[T] = None,
       name: String = null,
       description: String = "",
-      options: Option[Map[T, String]] = None) = {
+      default: Option[T] = None,
+      options: Traversable[(String, T)] = Nil) = {
 
+    // Rename parameters so we can use them in the anonymous class without becoming recursive
     val idParam = id
     val nameParam = name
     val descriptionParam = description
@@ -36,7 +59,7 @@ object ElementaryAttribute {
       val description = descriptionParam
       val options = optionsParam
       val defaultValue = default
-      val valueType = classManifest[T].erasure
+      val valueType = classTag[T].runtimeClass
       def validate(value: T) = ValidationResult.NotValidated
     }
   }

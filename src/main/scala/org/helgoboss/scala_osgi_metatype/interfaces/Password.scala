@@ -1,7 +1,10 @@
 package org.helgoboss.scala_osgi_metatype.interfaces
 
 /**
- * A type applicable to [[org.helgoboss.scala_osgi_metatype.interfaces.AttributeDefinition]]. Maps to
+ * A value type applicable to [[AttributeDefinition]]. Maps to
  * [[org.osgi.service.metatype.AttributeDefinition.PASSWORD]].
+ *
+ * @constructor Creates a password value.
+ * @param password The wrapped password
  */
 case class Password(password: String)
