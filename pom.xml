@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.helgoboss</groupId>
         <artifactId>my-scala-oss-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath></relativePath>
+        <version>1.0.0</version>
+        <relativePath />
     </parent>
     
     <groupId>org.helgoboss</groupId>
     <artifactId>scala-osgi-metatype</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>bundle</packaging>
     <name>Scala OSGi Metatype</name>
     <description>Scala interfaces, adapters and builders for easily building OSGi Metatype descriptions</description>
