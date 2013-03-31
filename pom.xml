@@ -11,7 +11,7 @@
     
     <groupId>org.helgoboss</groupId>
     <artifactId>scala-osgi-metatype</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>Scala OSGi Metatype</name>
     <description>Scala interfaces, adapters and builders for easily building OSGi Metatype descriptions</description>
