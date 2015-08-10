@@ -1,3 +1,5 @@
+**ATTENTION**: `scala-osgi-metatype` is now included in [Domino](https://github.com/domino-osgi/domino)! This repository is deprecated.
+
 Scala OSGi Metatype
 ===================
 
